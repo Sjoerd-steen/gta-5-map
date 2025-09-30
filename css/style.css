@@ -45,21 +45,28 @@ html,body {
   transform-origin:0 0;
 }
 
+
+
 .marker-btn {
   position:absolute;
-  left:1200px;
-  top:800px;
-  transform:translate(-50%, -100%);
+  left:1750px;
+  top:7200px;
   background:#ff3b30;
   color:#fff;
   border:none;
   border-radius:16px;
-  padding:6px 10px;
-  font-weight:600;
+  padding: 20px;
+  font-size: x-large;
   cursor:pointer;
   box-shadow:0 4px 10px rgba(0,0,0,0.35);
   z-index:10;
 }
+
+.marker-btn:hover {
+  scale: 1.5;
+}
+
+
 
 .controls {
   position:fixed;
