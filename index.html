@@ -1,14 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive Map</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    
+  <div id="app">
+    <div class="viewer" id="viewer">
+      <!-- Replace with your own map image -->
+      <img id="mapImg" class="map" src="img/GTA_MAP.webp" alt="map">
+    </div>
+  </div>
 
-    <script src="scripts/scripts.js"></script>
+  <div class="controls">
+    <button id="zoomIn">＋</button>
+    <button id="zoomOut">−</button>
+    <button id="reset">reset</button>
+  </div>
+  <div class="hint">Drag (hold left mouse) to pan • Wheel or pinch to zoom • Image fills screen at min zoom</div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
