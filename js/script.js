@@ -234,4 +234,51 @@
   window.addEventListener('resize', () => { recalc(); });
   if (img.complete) setTimeout(recalc, 0);
   
+  // Add this code at the end of the IIFE
+  const popup = document.getElementById('popup');
+  const popupText = document.getElementById('popupText');
+  const closePopupBtn = document.getElementById('closePopup');
+
+  function showPopup(text) {
+    popupText.textContent = text;
+    popup.classList.remove('hidden');
+  }
+
+  function hidePopup() {
+    popup.classList.add('hidden');
+  }
+
+  closePopupBtn.addEventListener('click', hidePopup);
+
+  if (gotoAirportBtn) gotoAirportBtn.addEventListener('click', () => {
+    closeSidebar();
+    goToElement(markerAirport);
+    showPopup('This is the airport in the city of Los Santos.');
+  });
+
+  if (gotoBeachBtn) gotoBeachBtn.addEventListener('click', () => {
+    closeSidebar();
+    goToElement(markerBeach);
+    showPopup('This is the beach in the city of Los Santos.');
+  });
+
+  if (gotoMountChiliatBtn) gotoMountChiliatBtn.addEventListener('click', () => {
+    closeSidebar();
+    goToElement(markerChiliat);
+    showPopup('This is the biggest mountain in Los Santos.');
+  });
+
+  // Attach event listeners to the map markers
+  if (markerAirport) markerAirport.addEventListener('click', () => {
+    showPopup('This is the airport in the city of Los Santos.');
+  });
+
+  if (markerBeach) markerBeach.addEventListener('click', () => {
+    showPopup('This is the beach in the city of Los Santos.');
+  });
+
+  if (markerChiliat) markerChiliat.addEventListener('click', () => {
+    showPopup('This is the biggest mountain in Los Santos.');
+  });
+
 })();
