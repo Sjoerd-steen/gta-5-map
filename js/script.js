@@ -8,8 +8,8 @@
   let natW = 0, natH = 0;
   let scale = 1;
   let minScale = 1;
-  let maxScale = 4;
-  let tx = 0, ty = 0;
+  let maxScale = 1;
+  let tx = -2000, ty = -4000;
 
   let dragging = false;
   let lastX = 0, lastY = 0;
@@ -116,7 +116,12 @@
     applyTransform();
   });
 
-  img.addEventListener('load', () => { recalc(); });
+  img.addEventListener('load', () => { recalc();
+    scale = minScale * 0.7;   
+    tx = -2000;
+    ty = -3000;
+
+   });
   window.addEventListener('resize', () => { recalc(); });
   if (img.complete) setTimeout(recalc, 0);
 })();
