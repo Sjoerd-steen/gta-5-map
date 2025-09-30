@@ -237,6 +237,58 @@ html,body {
 
 
 
+.MountChiliat {
+  position:absolute;
+  left:2850px;
+  top:1750px;
+  background:#ff3b30;
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding: 20px;
+  font-size: x-large;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.35);
+  z-index:10;
+}
+
+.MountChiliat:hover {
+  scale: 2;
+}
+
+
+
+.MountChiliat[data-tooltip] {
+  position: absolute;
+}
+
+.MountChiliat[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  transform-origin: bottom center;
+}
+
+.MountChiliat[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+
+
+
 
 
 
