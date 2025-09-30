@@ -5,6 +5,9 @@
   const zoomInBtn = document.getElementById('zoomIn');
   const zoomOutBtn = document.getElementById('zoomOut');
   const resetBtn = document.getElementById('reset');
+  const sidebar = document.getElementById('sidebar');
+  const openMenuBtn = document.getElementById('openMenu');
+  const closeMenuBtn = document.getElementById('closeMenu');
 
   let natW = 0, natH = 0;
   let scale = 1;
@@ -71,6 +74,11 @@
   }, {passive:false});
 
   viewer.addEventListener('pointerdown', (e) => {
+    // Ignore interactions that start over the sidebar area
+    if (!sidebar.classList.contains('closed')) {
+      const sbRect = sidebar.getBoundingClientRect();
+      if (e.clientX <= sbRect.right) return;
+    }
     viewer.setPointerCapture(e.pointerId);
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 1) {
@@ -124,6 +132,18 @@
     clampTranslation();
     applyTransform();
   });
+
+  // Sidebar toggle logic
+  function openSidebar(){
+    sidebar.classList.remove('closed');
+    recalc();
+  }
+  function closeSidebar(){
+    sidebar.classList.add('closed');
+    recalc();
+  }
+  openMenuBtn.addEventListener('click', openSidebar);
+  closeMenuBtn.addEventListener('click', closeSidebar);
 
   img.addEventListener('load', () => { recalc();
     scale = minScale;   

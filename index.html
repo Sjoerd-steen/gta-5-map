@@ -8,15 +8,35 @@
 </head>
 <body>
   <div id="app">
+    <aside id="sidebar" class="sidebar closed" aria-label="Menu">
+      <div class="sidebar-header">
+        <h2>Los Santos</h2>
+        <button id="closeMenu" class="sidebar-close" aria-label="Close menu">Close ▸</button>
+      </div>
+      <div class="sidebar-content">
+        <div class="menu-section">
+          <div class="menu-actions">
+            <button class="menu-btn">Show all</button>
+            <button class="menu-btn">Hide all</button>
+          </div>
+          <input class="menu-search" type="search" placeholder="Search..." />
+        </div>
+        <!-- You can populate with real filters/categories later -->
+        <ul class="menu-list">
+          <li>Locations</li>
+          <li>Activities</li>
+          <li>Entertainment</li>
+          <li>Services</li>
+          <li>Collectibles</li>
+        </ul>
+      </div>
+    </aside>
+    <button id="openMenu" class="sidebar-open" aria-label="Open menu">◂ Open menu</button>
     <div class="viewer" id="viewer">
       <!-- Replace with your own map image -->
       <div id="mapLayer" class="map-layer">
         <img id="mapImg" class="map" src="img/GTA_MAP.webp" alt="map">
-        
         <button id="markerA" class="marker-btn">Airport</button>
-
-
-
       </div>
     </div>
   </div>
