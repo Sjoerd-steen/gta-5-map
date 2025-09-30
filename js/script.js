@@ -1,5 +1,6 @@
 (function(){
   const img = document.getElementById('mapImg');
+  const mapLayer = document.getElementById('mapLayer');
   const viewer = document.getElementById('viewer');
   const zoomInBtn = document.getElementById('zoomIn');
   const zoomOutBtn = document.getElementById('zoomOut');
@@ -25,7 +26,7 @@
   }
 
   function applyTransform(){
-    img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    mapLayer.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
   }
 
   function clampTranslation(){
@@ -128,39 +129,10 @@
     scale = minScale;   
     tx = -2000;
     ty = -3000;
-
+    clampTranslation();
+    applyTransform();
    });
   window.addEventListener('resize', () => { recalc(); });
   if (img.complete) setTimeout(recalc, 0);
-
-  const mapImg = document.getElementById('mapImg');
-  let isDragging = false;
-  let startX, startY;
-  let translateX = 0, translateY = 0;
-
-  // Add event listeners for dragging
-  mapImg.addEventListener('mousedown', (event) => {
-    isDragging = true;
-    startX = event.clientX - translateX;
-    startY = event.clientY - translateY;
-    mapImg.style.cursor = 'grabbing'; // Change cursor to grabbing
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-    mapImg.style.cursor = 'grab'; // Change cursor back to grab
-  });
-
-  window.addEventListener('mousemove', (event) => {
-    if (!isDragging) return;
-
-    translateX = event.clientX - startX;
-    translateY = event.clientY - startY;
-
-    // Apply the translation to the image
-    mapImg.style.transform = `translate(${translateX}px, ${translateY}px)`;
-  });
-
-  // Set initial cursor style
-  mapImg.style.cursor = 'grab';
+  
 })();

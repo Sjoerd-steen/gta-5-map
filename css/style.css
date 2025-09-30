@@ -38,6 +38,29 @@ html,body {
   top:0;
 }
 
+.map-layer {
+  position:absolute;
+  left:0;
+  top:0;
+  transform-origin:0 0;
+}
+
+.marker-btn {
+  position:absolute;
+  left:1200px;
+  top:800px;
+  transform:translate(-50%, -100%);
+  background:#ff3b30;
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding:6px 10px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.35);
+  z-index:10;
+}
+
 .controls {
   position:fixed;
   right:12px;
