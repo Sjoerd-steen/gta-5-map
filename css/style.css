@@ -23,7 +23,6 @@ html,body {
   overflow:hidden;
   z-index:50;
   transition: width 280ms ease, min-width 280ms ease, box-shadow 280ms ease;
-  position:relative;
 }
 
 .sidebar.closed {
@@ -47,26 +46,13 @@ html,body {
 .sidebar-header h2 { margin:0; font-size:18px; }
 
 .sidebar-close {
-  position:absolute;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-  width:40px;
-  height:160px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.12);
-  border-right:none;
-  color:#fff;
-  border-radius:0 8px 8px 0;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  color:inherit;
+  padding:6px 10px;
+  border-radius:8px;
   cursor:pointer;
-  writing-mode:vertical-rl;
-  text-orientation:mixed;
-  z-index:100;
 }
-.sidebar.closed .sidebar-close { display:none; }
 
 .sidebar-content { padding:12px; opacity:1; transform:none; transition: opacity 260ms ease 60ms, transform 260ms ease 60ms; }
 .sidebar.closed .sidebar-content { opacity:0; transform:translateX(-8px); transition-delay:0ms; }
@@ -96,23 +82,17 @@ html,body {
   left:0;
   top:50%;
   transform:translateY(-50%);
-  width:40px;
-  height:160px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.12);
   border-left:none;
   color:#fff;
+  padding:10px 12px;
   border-radius:0 8px 8px 0;
   cursor:pointer;
   z-index:55;
   display:none;
   opacity:0;
   transition: opacity 220ms ease;
-  writing-mode:vertical-rl;
-  text-orientation:mixed;
 }
 
 /* Show when closed; hide when open */
@@ -152,7 +132,9 @@ html,body {
 
 
 
-.marker-btn {
+
+
+.airport {
   position:absolute;
   left:1750px;
   top:7200px;
@@ -167,9 +149,94 @@ html,body {
   z-index:10;
 }
 
-.marker-btn:hover {
-  scale: 1.5;
+.airport:hover {
+  scale: 2;
 }
+
+
+
+.airport[data-tooltip] {
+  position: absolute;
+}
+
+.airport[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  transform-origin: bottom center;
+}
+
+.airport[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+
+
+.beach{
+  position:absolute;
+  left:1500px;
+  top:6100px;
+  background:#ff3b30;
+  color:#fff;
+  border:none;
+  border-radius:16px;
+  padding: 20px;
+  font-size: x-large;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.35);
+  z-index:10;
+}
+
+.beach:hover {
+  scale: 2;
+}
+
+
+
+.beach[data-tooltip] {
+  position: absolute;
+}
+
+.beach[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  transform-origin: bottom center;
+}
+
+.beach[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+
+
+
 
 
 
