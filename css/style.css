@@ -235,8 +235,6 @@ html,body {
 }
 
 
-
-
 .MountChiliat {
   position:absolute;
   left:2850px;
@@ -255,8 +253,6 @@ html,body {
 .MountChiliat:hover {
   scale: 2;
 }
-
-
 
 .MountChiliat[data-tooltip] {
   position: absolute;
