@@ -7,7 +7,7 @@
   const resetBtn = document.getElementById('reset');
   const sidebar = document.getElementById('sidebar');
   const openMenuBtn = document.getElementById('openMenu');
-  const closeMenuBtn = document.getElementById('closeMenu');
+  const closeMenuBtn = null;
   const markerAirport = document.getElementById('markerA');
   const markerBeach = document.getElementById('markerB');
   const gotoAirportBtn = document.getElementById('gotoAirport');
@@ -208,16 +208,8 @@
   });
 
   // Sidebar toggle logic
-  function openSidebar(){
-    sidebar.classList.remove('closed');
-    recalc();
-  }
-  function closeSidebar(){
-    sidebar.classList.add('closed');
-    recalc();
-  }
-  openMenuBtn.addEventListener('click', openSidebar);
-  closeMenuBtn.addEventListener('click', closeSidebar);
+  function openSidebar(){}
+  function closeSidebar(){}
 
   if (gotoAirportBtn) gotoAirportBtn.addEventListener('click', () => {
     closeSidebar();

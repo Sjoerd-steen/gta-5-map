@@ -26,9 +26,8 @@ html,body {
 }
 
 .sidebar.closed {
-  width:0;
-  min-width:0;
-  border-right:none;
+  width:320px;
+  min-width:320px;
 }
 
 .sidebar-header {
@@ -55,7 +54,7 @@ html,body {
 }
 
 .sidebar-content { padding:12px; opacity:1; transform:none; transition: opacity 260ms ease 60ms, transform 260ms ease 60ms; }
-.sidebar.closed .sidebar-content { opacity:0; transform:translateX(-8px); transition-delay:0ms; }
+.sidebar.closed .sidebar-content { opacity:1; transform:none; transition-delay:0ms; }
 .menu-actions { display:flex; gap:8px; margin-bottom:10px; }
 .menu-btn {
   background:rgba(255,255,255,0.06);
@@ -77,27 +76,11 @@ html,body {
 .menu-list li { padding:8px 10px; background:#131313; border:1px solid rgba(255,255,255,0.06); border-radius:8px; }
 
 /* Open handle shown only when sidebar is closed */
-.sidebar-open {
-  position:fixed;
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.12);
-  border-left:none;
-  color:#fff;
-  padding:10px 12px;
-  border-radius:0 8px 8px 0;
-  cursor:pointer;
-  z-index:55;
-  display:none;
-  opacity:0;
-  transition: opacity 220ms ease;
-}
+.sidebar-open { display:none; }
 
 /* Show when closed; hide when open */
-.sidebar.closed ~ .sidebar-open { display:block; opacity:1; }
-.sidebar:not(.closed) ~ .sidebar-open { display:none; opacity:0; }
+.sidebar.closed ~ .sidebar-open { display:none; }
+.sidebar:not(.closed) ~ .sidebar-open { display:none; }
 
 .viewer {
   position:relative;
