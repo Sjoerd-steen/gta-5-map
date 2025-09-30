@@ -21,7 +21,7 @@
     if (!natW || !natH) return 1;
     const sx = vw / natW;
     const sy = vh / natH;
-    return Math.max(sx, sy); // cover
+    return Math.max(sx, sy);
   }
 
   function applyTransform(){
@@ -71,21 +71,25 @@
 
   viewer.addEventListener('pointerdown', (e) => {
     viewer.setPointerCapture(e.pointerId);
-    pointers.set(e.pointerId, {x:e.clientX,y:e.clientY});
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 1) {
       dragging = true;
-      lastX = e.clientX; lastY = e.clientY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      viewer.style.cursor = 'grabbing'; // Change cursor to grabbing
     }
   });
 
   viewer.addEventListener('pointermove', (e) => {
     if (!pointers.has(e.pointerId)) return;
-    pointers.set(e.pointerId, {x:e.clientX,y:e.clientY});
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 1 && dragging) {
       const dx = e.clientX - lastX;
       const dy = e.clientY - lastY;
-      lastX = e.clientX; lastY = e.clientY;
-      tx += dx; ty += dy;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      tx += dx;
+      ty += dy;
       clampTranslation();
       applyTransform();
     }
@@ -95,7 +99,11 @@
     pointers.delete(e.pointerId);
     viewer.releasePointerCapture(e.pointerId);
     dragging = false;
+    viewer.style.cursor = 'grab'; // Change cursor back to grab
   });
+
+  // Set the initial cursor style
+  viewer.style.cursor = 'grab';
 
   zoomInBtn.addEventListener('click', ()=>{
     const rect = viewer.getBoundingClientRect();
@@ -117,11 +125,42 @@
   });
 
   img.addEventListener('load', () => { recalc();
-    scale = minScale * 0.7;   
+    scale = minScale;   
     tx = -2000;
     ty = -3000;
 
    });
   window.addEventListener('resize', () => { recalc(); });
   if (img.complete) setTimeout(recalc, 0);
+
+  const mapImg = document.getElementById('mapImg');
+  let isDragging = false;
+  let startX, startY;
+  let translateX = 0, translateY = 0;
+
+  // Add event listeners for dragging
+  mapImg.addEventListener('mousedown', (event) => {
+    isDragging = true;
+    startX = event.clientX - translateX;
+    startY = event.clientY - translateY;
+    mapImg.style.cursor = 'grabbing'; // Change cursor to grabbing
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    mapImg.style.cursor = 'grab'; // Change cursor back to grab
+  });
+
+  window.addEventListener('mousemove', (event) => {
+    if (!isDragging) return;
+
+    translateX = event.clientX - startX;
+    translateY = event.clientY - startY;
+
+    // Apply the translation to the image
+    mapImg.style.transform = `translate(${translateX}px, ${translateY}px)`;
+  });
+
+  // Set initial cursor style
+  mapImg.style.cursor = 'grab';
 })();
